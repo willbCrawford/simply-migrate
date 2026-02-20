@@ -8,6 +8,7 @@ import pluggy
 
 job_hook_spec = pluggy.HookspecMarker("job")
 migration_hook_spec = pluggy.HookspecMarker("migration")
+migration_file_spec = pluggy.HookspecMarker("migration_file")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -43,3 +44,9 @@ class MigrationCallbackSpec:
     @migration_hook_spec
     def after_script(self, context: CallbackContext):
         """Run after each script completes"""
+
+
+class MigrationFileSpec:
+    @migration_hook_spec
+    def get_files(self, context: CallbackContext):
+        """Get the files. By default, it will pull from the migrations folder. You can override this with an environment variable."""

@@ -1,6 +1,6 @@
 # pull official base image
 FROM python:3.11.2-slim-buster
-LABEL authors="lily-pad"
+LABEL authors="will-crawford"
 
 # set work directory
 WORKDIR /app
@@ -12,13 +12,14 @@ ENV PYTHONUNBUFFERED 1
 # Install uv.
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
+COPY pyproject.toml uv.lock ./
+
+RUN uv sync --locked --no-cache
+
 # Copy the application into the container.
-COPY . /app
+COPY app/ ./app
 
 # Install the application dependencies.
 WORKDIR /app
-RUN uv sync --locked --no-cache
 
-RUN ls -latr
-
-CMD ["uv", "run", "fastapi", "dev", "--host", "0.0.0.0"]
+CMD ["uv", "run", "simply-migrate", "api"]

@@ -6,14 +6,12 @@ services:
     build: .
     ports:
       - "8004:8000"
-    command: uv run fastapi dev --host 0.0.0.0
     volumes:
       - ./app:/usr/src/app/app
       - ./test_data/scenario_1:/app/migrations
     environment:
       - REDIS_URL=redis://redis:6379/0
       - MIGRATION_DIR=/app/migrations
-      - SIMPLY_MIGRATE_CALLBACK_FILE=app/callbacks.py
     depends_on:
       - redis
 
@@ -24,8 +22,6 @@ services:
       - ./app:/usr/src/app/app
     environment:
       - REDIS_URL=redis://redis:6379/0
-      - SIMPLY_MIGRATE_CALLBACK_FILE=app/callbacks.py
-
     depends_on:
       - web
       - redis

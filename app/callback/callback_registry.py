@@ -6,7 +6,7 @@ from .callback_result import CallbackResult
 import logging
 import pluggy
 
-from .specs import MigrationCallbackSpec, JobCallbackSpec
+from .specs import MigrationCallbackSpec, JobCallbackSpec, MigrationFileSpec
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -25,6 +25,14 @@ class JobCallbackRegistry:
     def __init__(self):
         self.pm = pluggy.PluginManager("job")
         self.pm.add_hookspecs(JobCallbackSpec)
+
+    def register_plugin(self, plugin):
+        self.pm.register(plugin)
+
+class MigrationFileRegistry:
+    def __init__(self):
+        self.pm = pluggy.PluginManager("migration_file")
+        self.pm.add_hookspecs(MigrationFileSpec)
 
     def register_plugin(self, plugin):
         self.pm.register(plugin)

@@ -32,13 +32,16 @@ async def start_migration_job(
 ) -> Dict[str, Any]:
     """Start a migration job with optional callback file"""
 
-    callback_file = os.environ['SIMPLY_MIGRATE_CALLBACK_FILE']
+    try:
+        callback_file = os.environ['SIMPLY_MIGRATE_CALLBACK_FILE']
+
+        # Load callbacks if file provided
+        if callback_file:
+            callback_registry.load_from_file(callback_file)
+    except KeyError as e:
+        logger.info(f"Could not load the callback file. Environment variable was never supplied")
 
     logger.info(f"{{ job_id: '{job_id}', tenants: [{tenants}], scripts: [{scripts}], dry_run: {dry_run}, parallel: {parallel}, callback_file: {callback_file} }}")
-
-    # Load callbacks if file provided
-    if callback_file:
-        callback_registry.load_from_file(callback_file)
 
     # Run before_job callbacks
     try:
