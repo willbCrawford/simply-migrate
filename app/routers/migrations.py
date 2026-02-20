@@ -79,6 +79,7 @@ async def validate_migrations(request: ValidateMigrationsRequest):
         )
 
 
+# TODO: Create logic to store migration data in master database and to conditionally create tables if not exists or store in filesystem/remote storage
 @router.post(
     "/start",
     response_model=StartMigrationResponse,

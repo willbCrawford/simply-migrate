@@ -62,6 +62,7 @@ except KeyError as e:
 print(app.conf)
 
 
+# TODO: Create logic to store migrations in tenant database and conditionally create tables to store data
 @app.task(
     bind=True,
     # soft_time_limit=Config.TASK_SOFT_TIME_LIMIT,
