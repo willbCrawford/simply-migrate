@@ -50,15 +50,19 @@ state_manager = StateManager(redis_client)
 
 callback_registry = CallbackRegistry()
 
-callback_file = os.environ['SIMPLY_MIGRATE_CALLBACK_FILE']
+try:
+    callback_file = os.environ['SIMPLY_MIGRATE_CALLBACK_FILE']
 
-# Load callbacks if file provided
-if callback_file:
-    callback_registry.load_from_file(callback_file)
+    # Load callbacks if file provided
+    if callback_file:
+        callback_registry.load_from_file(callback_file)
+except KeyError as e:
+    logger.info(f"Could not load the callback file. Environment variable was never supplied")
 
 print(app.conf)
 
 
+# TODO: Create logic to store migrations in tenant database and conditionally create tables to store data
 @app.task(
     bind=True,
     # soft_time_limit=Config.TASK_SOFT_TIME_LIMIT,

@@ -6,12 +6,16 @@ from .callback_result import CallbackResult
 import logging
 import pluggy
 
-from .specs import MigrationCallbackSpec, JobCallbackSpec
+from .specs import MigrationCallbackSpec, JobCallbackSpec, MigrationFileSpec
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+# TODO: Create a plugin for runners: Default is Celery and there is an implementation of Github, Gitlab, etc runners. This will be a long term goal
+
+
+# TODO: Create better dependency injection for connection strings, before/after migrations, and before/after tenants
 class MigrationCallbackRegistry:
     def __init__(self):
         self.pm = pluggy.PluginManager("migration")
@@ -21,10 +25,22 @@ class MigrationCallbackRegistry:
         self.pm.register(plugin)
 
 
+# TODO: Create better dependency injection for before/after job
 class JobCallbackRegistry:
     def __init__(self):
         self.pm = pluggy.PluginManager("job")
         self.pm.add_hookspecs(JobCallbackSpec)
+
+    def register_plugin(self, plugin):
+        self.pm.register(plugin)
+
+# TODO: Create AWS, AZURE AND GCP plugins to get files from s3, storage accounts etc.
+# TODO: Create default plugin logic to pull migration files from local folder
+# TODO: Create plugin for github to pull db repo
+class MigrationFileRegistry:
+    def __init__(self):
+        self.pm = pluggy.PluginManager("migration_file")
+        self.pm.add_hookspecs(MigrationFileSpec)
 
     def register_plugin(self, plugin):
         self.pm.register(plugin)
