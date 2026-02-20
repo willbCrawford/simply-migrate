@@ -1,0 +1,1 @@
+CREATE TABLE addresses(id int primary key, full_address varchar);

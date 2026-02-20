@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "8004:8000"
+    command: uv run fastapi dev --host 0.0.0.0
+    volumes:
+      - ./app:/usr/src/app/app
+      - ./test_data/scenario_1:/app/migrations
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - MIGRATION_DIR=/app/migrations
+      - SIMPLY_MIGRATE_CALLBACK_FILE=app/callbacks.py
+    depends_on:
+      - redis
+
+  worker:
+    build: .
+    command: uv run celery -A app.worker.app worker -E -Q migrations,rollback,celery --loglevel=info
+    volumes:
+      - ./app:/usr/src/app/app
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - SIMPLY_MIGRATE_CALLBACK_FILE=app/callbacks.py
+
+    depends_on:
+      - web
+      - redis
+
+  redis:
+    image: redis:8.4.0
+    restart: 'always'
+    ports:
+      - '6379:6379'
+
+  tenant_1:
+    image: postgres
+    environment:
+      - POSTGRES_USER=tenant
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tenant
+
+  tenant_2:
+    image: postgres
+    environment:
+      - POSTGRES_USER=tenant
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tenant
+
+  tenant_3:
+    image: postgres
+    environment:
+      - POSTGRES_USER=tenant
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tenant
+
+#  dashboard:
+#    build: ./app
+#    command: celery --broker=redis://redis:6379/0 flower --port=5555
+#    ports:
+#      - 5556:5555
+#    environment:
+#      - CELERY_BROKER_URL=redis://redis:6379/0
+#      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+#    depends_on:
+#      - web
+#      - redis
+#      - worker
