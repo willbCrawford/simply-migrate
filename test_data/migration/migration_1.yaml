@@ -1,0 +1,12 @@
+name: migration_1
+version: latest
+tenants:
+  - name: tenant_1
+    id: "1"
+    connectionString: ""
+  - name: tenant_2
+    id: "2"
+    connectionString: ""
+  - name: tenant_3
+    id: "3"
+    connectionString: ""
