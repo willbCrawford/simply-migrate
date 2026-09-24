@@ -1,0 +1,7 @@
+celery>=5.6.2
+fastapi[standard]>=0.128.0
+pluggy>=1.6.0
+psycopg2-binary>=2.9.11
+redis>=7.1.0
+sqlalchemy>=2.0.46
+typer>=0.21.1

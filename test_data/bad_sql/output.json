@@ -1,0 +1,40 @@
+{
+  "migrations": [
+    {
+      "tenant_id": "1",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [],
+      "callback_metadata": {},
+      "error_message": "(psycopg.errors.SyntaxError) syntax error at end of input\nLINE 9: \n        ^\n[SQL: -- TEST: Syntax error \u2014 missing closing parenthesis\n-- EXPECTED: PG error 42601 (syntax_error)\n-- BEHAVIOUR: Should fail immediately, no table created\n\nCREATE TABLE bad_syntax (\n    id SERIAL PRIMARY KEY,\n    name TEXT NOT NULL\n-- intentionally missing closing paren and semicolon\n]\n(Background on this error at: https://sqlalche.me/e/21/f405)",
+      "started_at": "2026-03-19T03:06:10.933944+00:00",
+      "completed_at": "2026-03-19T03:06:15.497501+00:00",
+      "duration_seconds": 0
+    },
+    {
+      "tenant_id": "2",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [],
+      "callback_metadata": {},
+      "error_message": "(psycopg.errors.SyntaxError) syntax error at end of input\nLINE 9: \n        ^\n[SQL: -- TEST: Syntax error \u2014 missing closing parenthesis\n-- EXPECTED: PG error 42601 (syntax_error)\n-- BEHAVIOUR: Should fail immediately, no table created\n\nCREATE TABLE bad_syntax (\n    id SERIAL PRIMARY KEY,\n    name TEXT NOT NULL\n-- intentionally missing closing paren and semicolon\n]\n(Background on this error at: https://sqlalche.me/e/21/f405)",
+      "started_at": "2026-03-19T03:06:15.497565+00:00",
+      "completed_at": "2026-03-19T03:06:15.530390+00:00",
+      "duration_seconds": 0
+    },
+    {
+      "tenant_id": "3",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [],
+      "callback_metadata": {},
+      "error_message": "(psycopg.errors.SyntaxError) syntax error at end of input\nLINE 9: \n        ^\n[SQL: -- TEST: Syntax error \u2014 missing closing parenthesis\n-- EXPECTED: PG error 42601 (syntax_error)\n-- BEHAVIOUR: Should fail immediately, no table created\n\nCREATE TABLE bad_syntax (\n    id SERIAL PRIMARY KEY,\n    name TEXT NOT NULL\n-- intentionally missing closing paren and semicolon\n]\n(Background on this error at: https://sqlalche.me/e/21/f405)",
+      "started_at": "2026-03-19T03:06:15.530455+00:00",
+      "completed_at": "2026-03-19T03:06:15.561203+00:00",
+      "duration_seconds": 0
+    }
+  ]
+}

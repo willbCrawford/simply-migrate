@@ -1,0 +1,13 @@
+version: "1.2.0"
+description: "Add account tiers"
+released_at: "2024-11-01"
+on_error: continue
+statement_timeout: 60
+lock_timeout: 10
+tenants:                        # optional — omit to target all tenants
+  - tenant_1
+  - tenant_2
+scripts:
+  - path: V1.2__add_addresses_table.sql
+  - path: V1.3__link_customers_to_addresses.sql
+    on_error: continue          # per-script override

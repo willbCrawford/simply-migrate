@@ -1,0 +1,49 @@
+{
+  "migrations": [
+    {
+      "tenant_id": "1",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [
+        "V1.0__init_database.sql",
+        "V1.1__add_customers_table.sql"
+      ],
+      "callback_metadata": {},
+      "error_message": null,
+      "started_at": "2026-07-08T02:58:21.736162+00:00",
+      "completed_at": null,
+      "duration_seconds": 0
+    },
+    {
+      "tenant_id": "2",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [
+        "V1.0__init_database.sql",
+        "V1.1__add_customers_table.sql"
+      ],
+      "callback_metadata": {},
+      "error_message": null,
+      "started_at": "2026-07-08T02:58:22.016287+00:00",
+      "completed_at": null,
+      "duration_seconds": 0
+    },
+    {
+      "tenant_id": "3",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [
+        "V1.0__init_database.sql",
+        "V1.1__add_customers_table.sql"
+      ],
+      "callback_metadata": {},
+      "error_message": null,
+      "started_at": "2026-07-08T02:58:22.018778+00:00",
+      "completed_at": null,
+      "duration_seconds": 0
+    }
+  ]
+}
