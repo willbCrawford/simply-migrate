@@ -17,7 +17,6 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-cache
 
 # Copy the application into the container.
-COPY app/ ./app
 
 # Install the application dependencies.
 WORKDIR /app

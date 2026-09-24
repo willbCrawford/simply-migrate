@@ -7,7 +7,7 @@ services:
     ports:
       - "8004:8000"
     volumes:
-      - ./app:/usr/src/app/app
+      - ./app:/app/app         # live reload app code
       - ./test_data/scenario_1:/app/migrations
     environment:
       - REDIS_URL=redis://redis:6379/0
@@ -17,11 +17,13 @@ services:
 
   worker:
     build: .
-    command: uv run celery -A app.worker.app worker -E -Q migrations,rollback,celery --loglevel=info
+    command: uv run celery -A app.worker.celery_app worker -E -Q migrations,rollback,celery --loglevel=info
     volumes:
-      - ./app:/usr/src/app/app
+      - ./app:/app/app         # live reload app code
+      - ./test_data/scenario_1:/app/migrations
     environment:
       - REDIS_URL=redis://redis:6379/0
+      - MIGRATION_DIR=/app/migrations
     depends_on:
       - web
       - redis
@@ -38,6 +40,8 @@ services:
       - POSTGRES_USER=tenant
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=tenant
+    ports:
+      - '5431:5432'
 
   tenant_2:
     image: postgres
@@ -45,6 +49,8 @@ services:
       - POSTGRES_USER=tenant
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=tenant
+    ports:
+      - '5432:5432'
 
   tenant_3:
     image: postgres
@@ -52,6 +58,8 @@ services:
       - POSTGRES_USER=tenant
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=tenant
+    ports:
+      - '5433:5432'
 
 #  dashboard:
 #    build: ./app

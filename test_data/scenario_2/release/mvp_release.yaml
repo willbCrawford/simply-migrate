@@ -1,0 +1,10 @@
+version: "1.0.0"
+description: "Init customers table"
+released_at: "2024-11-01"
+on_error: continue
+statement_timeout: 60
+lock_timeout: 10
+scripts:
+  - path: V1.0__init_database.sql
+  - path: V1.1__add_customers_table.sql
+    on_error: continue          # per-script override

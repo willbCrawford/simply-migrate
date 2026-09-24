@@ -1,0 +1,25 @@
+[project]
+name = "simply-migrate"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "willBCrawford" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "logging>=0.4.9.6",
+    "pluggy>=1.6.0",
+    "psycopg>=3.3.3",
+    "pydantic>=2.12.5",
+    "pyyaml>=6.0.3",
+    "sqlalchemy>=2.1.0b1",
+    "typer>=0.21.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"

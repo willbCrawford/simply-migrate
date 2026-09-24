@@ -1,0 +1,26 @@
+[project]
+name = "simply-migrate-cli"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "willBCrawford" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "simply-migrate",
+    "typer>=0.21.1",
+    "typing>=3.10.0.0",
+    "psycopg-binary",
+    "rich>=14.3.2",
+]
+
+[project.scripts]
+simply-migrate="simply_migrate_cli.main:cli_wrapper"
+
+[tool.uv.sources]
+simply-migrate = { workspace = true }
+
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"

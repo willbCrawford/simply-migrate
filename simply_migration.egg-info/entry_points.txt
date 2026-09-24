@@ -1,0 +1,2 @@
+[console_scripts]
+simply-migrate = app.cli:cli_wrapper

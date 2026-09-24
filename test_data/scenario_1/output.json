@@ -1,0 +1,40 @@
+{
+  "migrations": [
+    {
+      "tenant_id": "1",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [],
+      "callback_metadata": {},
+      "error_message": "(psycopg.OperationalError) connection failed: connection to server at \"::1\", port 5431 failed: could not receive data from server: Connection refused\nMultiple connection attempts failed. All failures were:\n- host: 'localhost', port: 5431, hostaddr: '127.0.0.1': connection failed: connection to server at \"127.0.0.1\", port 5431 failed: could not receive data from server: Connection refused\n- host: 'localhost', port: 5431, hostaddr: '::1': connection failed: connection to server at \"::1\", port 5431 failed: could not receive data from server: Connection refused\n(Background on this error at: https://sqlalche.me/e/21/e3q8)",
+      "started_at": "2026-05-05T01:35:13.606110+00:00",
+      "completed_at": "2026-05-05T01:35:13.746714+00:00",
+      "duration_seconds": 0
+    },
+    {
+      "tenant_id": "2",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [],
+      "callback_metadata": {},
+      "error_message": "(psycopg.OperationalError) connection failed: connection to server at \"::1\", port 5432 failed: could not receive data from server: Connection refused\nMultiple connection attempts failed. All failures were:\n- host: 'localhost', port: 5432, hostaddr: '127.0.0.1': connection failed: connection to server at \"127.0.0.1\", port 5432 failed: could not receive data from server: Connection refused\n- host: 'localhost', port: 5432, hostaddr: '::1': connection failed: connection to server at \"::1\", port 5432 failed: could not receive data from server: Connection refused\n(Background on this error at: https://sqlalche.me/e/21/e3q8)",
+      "started_at": "2026-05-05T01:35:13.746766+00:00",
+      "completed_at": "2026-05-05T01:35:13.752532+00:00",
+      "duration_seconds": 0
+    },
+    {
+      "tenant_id": "3",
+      "status": "failed",
+      "scripts_applied": [],
+      "scripts_skipped": [],
+      "scripts_failed": [],
+      "callback_metadata": {},
+      "error_message": "(psycopg.OperationalError) connection failed: connection to server at \"::1\", port 5433 failed: could not receive data from server: Connection refused\nMultiple connection attempts failed. All failures were:\n- host: 'localhost', port: 5433, hostaddr: '127.0.0.1': connection failed: connection to server at \"127.0.0.1\", port 5433 failed: could not receive data from server: Connection refused\n- host: 'localhost', port: 5433, hostaddr: '::1': connection failed: connection to server at \"::1\", port 5433 failed: could not receive data from server: Connection refused\n(Background on this error at: https://sqlalche.me/e/21/e3q8)",
+      "started_at": "2026-05-05T01:35:13.752584+00:00",
+      "completed_at": "2026-05-05T01:35:13.756760+00:00",
+      "duration_seconds": 0
+    }
+  ]
+}
